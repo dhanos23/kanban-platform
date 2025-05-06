@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { useAuthStore } from "@/store/auth-store";
+"use client";
+
+import { useContext } from "react";
+import { AuthContext } from "@/components/providers/AuthProvider";
 
 export const useAuth = () => {
-  const authStore = useAuthStore();
+  const context = useContext(AuthContext);
 
-  // Refresh the session on component mount
-  useEffect(() => {
-    authStore.refreshSession();
-  }, []);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
 
-  return authStore;
+  return context;
 };

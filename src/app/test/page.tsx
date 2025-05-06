@@ -10,12 +10,8 @@ export default function TestPage() {
   const [boardTitle, setBoardTitle] = useState<string>("");
 
   // Auth store
-  const {
-    user,
-    isAuthenticated,
-    isLoading: authLoading,
-    error: authError,
-  } = useAuth();
+  const { user, isLoading: authLoading, error: authError } = useAuth();
+  const isAuthenticated = !!user;
 
   // Board store
   const {

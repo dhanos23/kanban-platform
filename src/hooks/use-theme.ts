@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { useThemeStore } from "@/store/theme-store";
+"use client";
+
+import { useContext } from "react";
+import { ThemeContext } from "@/components/providers/ThemeProvider";
 
 export const useTheme = () => {
-  const themeStore = useThemeStore();
+  const context = useContext(ThemeContext);
 
-  // Apply the theme to the document when it changes
-  useEffect(() => {
-    document.documentElement.className = themeStore.theme;
-  }, [themeStore.theme]);
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
 
-  return themeStore;
+  return context;
 };
