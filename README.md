@@ -28,6 +28,19 @@ This project leverages a modern tech stack:
 - **Testing**: Jest, React Testing Library, Cypress
 - **Architecture**: Atomic Design + Feature-based structure
 
+## Architecture
+
+### Backend and State Management
+
+This project uses Supabase as the backend, leveraging its PostgreSQL database capabilities, authentication, and row-level security. For frontend state management, we implement Zustand, which provides a lightweight and flexible solution.
+
+- **Supabase**: Provides data persistence, authentication, and security.
+- **API Services**: Layer that encapsulates communication with Supabase.
+- **Zustand**: Handles global application state with a minimalist approach.
+- **Custom Hooks**: Facilitate access to state from components.
+
+For more details, see the [backend and state architecture documentation](docs/backend-state.md).
+
 ## Getting Started
 
 ### Prerequisites
