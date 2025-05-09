@@ -3,7 +3,6 @@
 import { createContext, ReactNode, useContext } from "react";
 import { useBoardDetail } from "@/hooks";
 
-// Exportar las interfaces para que puedan ser utilizadas por otros componentes
 export interface Board {
   id: string;
   title: string;
@@ -70,9 +69,6 @@ interface BoardProviderProps {
 
 export const BoardProvider = ({ children }: BoardProviderProps) => {
   const boardDetailHook = useBoardDetail();
-
-  // Quita useEffect aquí si no se usa
-  // Si necesitas cargar datos iniciales, hazlo en el componente que usa este provider
 
   return (
     <BoardContext.Provider value={boardDetailHook}>

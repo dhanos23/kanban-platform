@@ -1,14 +1,20 @@
-"use client";
+import React from "react";
 
-import { ReactNode } from "react";
-import { BoardProvider } from "../BoardContext";
+interface BoardLayoutProps {
+  children: React.ReactNode;
+  params: {
+    id: string;
+  };
+}
 
-export default function BoardLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: { id: string };
-}) {
-  return <BoardProvider initialBoardId={params.id}>{children}</BoardProvider>;
+export default function BoardLayout({ children, params }: BoardLayoutProps) {
+  const resolvedParams = React.use(params);
+  const _boardId = resolvedParams.id;
+  console.log(_boardId);
+  return (
+    <div>
+      {/* Ahora puedes usar boardId en lugar de params.id */}
+      {children}
+    </div>
+  );
 }

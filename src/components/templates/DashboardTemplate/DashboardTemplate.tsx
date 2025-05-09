@@ -15,7 +15,6 @@ export const DashboardTemplate = ({ children }: DashboardTemplateProps) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Detectar cambios en el tamaño de la ventana para manejo responsivo
   useEffect(() => {
     const checkIfMobile = () => {
       const isMobileView = window.innerWidth < 768;

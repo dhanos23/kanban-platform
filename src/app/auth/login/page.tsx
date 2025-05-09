@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AuthTemplate } from "@/components/templates/AuthTemplate";
 import { FormField } from "@/components/molecules/FormField";
-import { useAuth } from "@/hooks"; // Importación desde el archivo de barril
+import { useAuth } from "@/hooks";
 
 export default function LoginPage() {
   const router = useRouter();

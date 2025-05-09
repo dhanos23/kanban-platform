@@ -1,98 +1,150 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color Palette - Light Mode */
-  --color-primary: #635fc7;
-  --color-primary-light: #a8a4ff;
-  --color-primary-dark: #4844b5;
+  --color-black: #000112;
+  --color-very-dark-grey: #20212c;
+  --color-dark-grey: #2b2c37;
+  --color-lines-dark: #3e3f4e;
+  --color-medium-grey: #828fa3;
+  --color-lines-light: #e4ebfa;
+  --color-light-grey: #f4f7fd;
+  --color-white: #ffffff;
+  --color-main-purple: #635fc7;
+  --color-main-purple-hover: #a8a4ff;
+  --color-red: #ea5555;
+  --color-red-hover: #ff9898;
 
-  --color-secondary: #ea5555;
-  --color-secondary-light: #ff9898;
-  --color-secondary-dark: #d14c4c;
+  --color-background: var(--color-light-grey);
+  --color-background-light: var(--color-white);
+  --color-background-dark: var(--color-lines-light);
 
-  --color-background: #f4f7fd;
-  --color-background-light: #ffffff;
-  --color-background-dark: #e4ebfa;
+  --color-surface: var(--color-white);
+  --color-surface-light: var(--color-white);
+  --color-surface-dark: var(--color-light-grey);
 
-  --color-surface: #ffffff;
-  --color-surface-light: #ffffff;
-  --color-surface-dark: #f4f7fd;
-
-  --color-text-primary: #000112;
-  --color-text-secondary: #828fa3;
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-medium-grey);
   --color-text-disabled: #bfbfc3;
 
-  --color-border: #e4ebfa;
+  --color-border: var(--color-lines-light);
 
-  /* Spacing & Sizing */
-  --border-radius: 0.5rem;
-  --border-radius-sm: 0.25rem;
-  --border-radius-lg: 1rem;
+  --color-primary: var(--color-main-purple);
+  --color-primary-hover: var(--color-main-purple-hover);
+  --color-destructive: var(--color-red);
+  --color-destructive-hover: var(--color-red-hover);
 
-  /* Effects */
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Tipografía */
+  --font-plus-jakarta: var(--font-plus-jakarta, sans-serif);
+  --font-family-base: var(--font-plus-jakarta);
+  --heading-xl-size: 24px;
+  --heading-xl-line: 30px;
 
-  /* Animation */
-  --transition-duration: 150ms;
+  --heading-l-size: 18px;
+  --heading-l-line: 23px;
+
+  --heading-m-size: 15px;
+  --heading-m-line: 19px;
+
+  --heading-s-size: 12px;
+  --heading-s-line: 15px;
+  --heading-s-kerning: 2.4px;
+
+  --body-l-size: 13px;
+  --body-l-line: 23px;
+
+  --body-m-size: 12px;
+  --body-m-line: 15px;
+
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
 }
 
-@theme dark {
-  /* Color Palette - Dark Mode */
-  --color-background: #20212c;
-  --color-background-light: #2b2c37;
-  --color-background-dark: #181820;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-surface: #2b2c37;
-  --color-surface-light: #3e3f4e;
-  --color-surface-dark: #20212c;
+@layer theme {
+  .dark {
+    --color-background: var(--color-very-dark-grey);
+    --color-background-light: var(--color-dark-grey);
+    --color-background-dark: #181820;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #828fa3;
-  --color-text-disabled: #3e3f4e;
+    --color-surface: var(--color-dark-grey);
+    --color-surface-light: var(--color-lines-dark);
+    --color-surface-dark: var(--color-very-dark-grey);
 
-  --color-border: #3e3f4e;
+    --color-text-primary: var(--color-white);
+    --color-text-secondary: var(--color-medium-grey);
+    --color-text-disabled: var(--color-lines-dark);
+
+    --color-border: var(--color-lines-dark);
+  }
 }
 
-@utility scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@utility tw-nav-item {
+  display: flex;
+  align-items: center;
+  width: 276px;
+  height: 48px;
+  padding: 0 20px 0 32px; /* Aumentado el padding izquierdo a 32px */
+  border-radius: 0 24px 24px 0;
+  transition: all 150ms;
+  color: var(--color-medium-grey);
 }
 
-@utility scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.tw-nav-item:hover {
+  background-color: rgba(99, 95, 199, 0.1);
+  color: var(--color-main-purple);
 }
 
-@utility btn-primary {
-  background-color: var(--color-primary);
+.tw-nav-item.active {
+  background-color: var(--color-main-purple);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition-duration: var(--transition-duration);
 }
 
-@utility btn-primary:hover {
-  background-color: var(--color-primary-light);
+@utility font-plus-jakarta {
+  font-family: var(--font-family-base);
 }
 
-@utility btn-secondary {
-  background-color: var(--color-secondary);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition-duration: var(--transition-duration);
+/* Utilidades personalizadas para tipografía */
+@utility text-heading-xl {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-xl-size);
+  line-height: var(--heading-xl-line);
+  font-weight: var(--font-weight-bold);
 }
 
-@utility btn-secondary:hover {
-  background-color: var(--color-secondary-light);
+@utility text-heading-l {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-l-size);
+  line-height: var(--heading-l-line);
+  font-weight: var(--font-weight-bold);
 }
 
-@utility card {
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  box-shadow: var(--shadow);
+@utility text-heading-m {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-m-size);
+  line-height: var(--heading-m-line);
+  font-weight: var(--font-weight-bold);
+}
+
+@utility text-heading-s {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-s-size);
+  line-height: var(--heading-s-line);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--heading-s-kerning);
+  text-transform: uppercase;
+}
+
+@utility text-body-l {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--body-l-size);
+  line-height: var(--body-l-line);
+  font-weight: var(--font-weight-medium);
+}
+
+@utility text-body-m {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--body-m-size);
+  line-height: var(--body-m-line);
+  font-weight: var(--font-weight-bold);
 }
