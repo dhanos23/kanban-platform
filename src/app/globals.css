@@ -148,3 +148,104 @@
   line-height: var(--body-m-line);
   font-weight: var(--font-weight-bold);
 }
+
+/* Utilidades personalizadas para botones - con prefijo correcto */
+@utility btn-primary-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--color-main-purple);
+  color: var(--color-white);
+  border-radius: 24px;
+  font-size: var(--body-m-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--body-m-line);
+  cursor: pointer;
+  border: none;
+}
+
+/* Estados del botón definidos con selectores regulares */
+.btn-primary-large:hover {
+  background-color: var(--color-main-purple-hover);
+}
+
+@utility btn-primary-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  background-color: var(--color-main-purple);
+  color: var(--color-white);
+  border-radius: 20px;
+  font-size: var(--body-m-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--body-m-line);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary-small:hover {
+  background-color: var(--color-main-purple-hover);
+}
+
+@utility btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  background-color: rgba(99, 95, 199, 0.1);
+  color: var(--color-main-purple);
+  border-radius: 24px;
+  font-size: var(--body-m-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--body-m-line);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(99, 95, 199, 0.25);
+}
+
+@utility btn-destructive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  border-radius: 24px;
+  font-size: var(--body-m-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--body-m-line);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-destructive:hover {
+  background-color: var(--color-red-hover);
+}
+
+@utility btn-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Clase adicional para botones full width */
+@utility btn-full {
+  width: 100%;
+}
+
+/* Estados focus */
+@utility btn-focus {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-background),
+    0 0 0 4px var(--color-main-purple);
+}

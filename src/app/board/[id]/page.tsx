@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { DashboardTemplate } from "@/components/templates/DashboardTemplate";
 import { BoardContext } from "../BoardContext";
+import { Button } from "@/components/atoms";
 
 export default function BoardDetailPage() {
   const { currentBoard, columns, isLoading, error } = useContext(BoardContext);
@@ -43,6 +44,32 @@ export default function BoardDetailPage() {
               The board you are looking for does not exist or you dont have
               access to it.
             </p>
+            <div className="space-y-4">
+              {/* Botón primario grande */}
+              <Button variant="primary-large">Button Primary (L)</Button>
+
+              {/* Botón primario pequeño */}
+              <Button variant="primary-small">Button Primary (S)</Button>
+
+              {/* Botón secundario */}
+              <Button variant="secondary">Button Secondary</Button>
+
+              {/* Botón destructivo */}
+              <Button variant="destructive">Button Destructive</Button>
+
+              {/* Botón con icono */}
+              <Button variant="primary-large">Add New Task</Button>
+
+              {/* Botón deshabilitado */}
+              <Button variant="primary-large" disabled>
+                Disabled Button
+              </Button>
+
+              {/* Botón de ancho completo */}
+              <Button variant="secondary" fullWidth>
+                Full Width Button
+              </Button>
+            </div>
           </div>
         </div>
       </DashboardTemplate>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useBoard } from "@/hooks";
 import { EllipsisVerticalIcon } from "@/components/atoms/icons";
 import { Heading, Body } from "@/components/atoms/Typography";
+import { Button } from "@/components/atoms/Button";
 
 interface HeaderProps {
   isSidebarOpen: boolean;
@@ -28,15 +29,16 @@ export const Header = ({ isSidebarOpen: _isSidebarOpen }: HeaderProps) => {
       </Heading>
 
       <div className="flex items-center pr-6">
-        <button
-          className="bg-main-purple hover:bg-main-purple-hover text-white rounded-full py-[15px] pl-6 pr-8 transition-colors w-[164px] h-[48px]"
+        <Button
+          variant="primary-large"
           onClick={handleAddNewTask}
+          className="w-[164px]"
         >
-          <Body size="m" as="span" className="flex items-center font-bold">
+          <span className="inline-flex items-center">
             <span className="mr-2">+</span>
-            Add New Task
-          </Body>
-        </button>
+            <span>Add New Task</span>
+          </span>
+        </Button>
 
         <div className="w-6 ml-6">
           <button
