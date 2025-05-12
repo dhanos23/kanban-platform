@@ -17,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="es" className="light">
       <body
-        className={`${plusJakartaSans.variable} font-plus-jakarta bg-background text-text-primary min-h-screen`}
+        className={`${plusJakartaSans.variable} bg-background text-text-primary min-h-screen`}
       >
         <ThemeProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <div className="logo-transition">{children}</div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

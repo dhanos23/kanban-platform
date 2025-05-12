@@ -4,13 +4,14 @@ import { useState } from "react";
 import { useBoard } from "@/hooks";
 import { EllipsisVerticalIcon } from "@/components/atoms/icons";
 import { Heading, Body } from "@/components/atoms/Typography";
-import { Button } from "@/components/atoms/Button";
+import { Logo } from "@/components/atoms";
+import { Button } from "@/components/atoms"; // Importar el componente Button
 
 interface HeaderProps {
   isSidebarOpen: boolean;
 }
 
-export const Header = ({ isSidebarOpen: _isSidebarOpen }: HeaderProps) => {
+export const Header = ({ isSidebarOpen }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { currentBoard } = useBoard();
 
@@ -24,20 +25,28 @@ export const Header = ({ isSidebarOpen: _isSidebarOpen }: HeaderProps) => {
 
   return (
     <header className="h-24 flex items-center justify-between border-b border-lines-light dark:border-lines-dark bg-white dark:bg-dark-grey">
-      <Heading level="xl" className="text-black dark:text-white pl-6">
-        {currentBoard?.title || "Platform Launch"}
-      </Heading>
+      {!isSidebarOpen && (
+        <div className="w-[209px] flex items-center justify-center border-r border-lines-light dark:border-lines-dark h-full">
+          <Logo />
+        </div>
+      )}
+
+      <div
+        className={`flex-1 flex items-center transition-all duration-300 ${!isSidebarOpen ? "pl-6" : "pl-6"}`}
+      >
+        <Heading level="xl" className="text-black dark:text-white">
+          {currentBoard?.title || "Platform Launch"}
+        </Heading>
+      </div>
 
       <div className="flex items-center pr-6">
+        {/* Usar el componente Button en lugar de botón personalizado */}
         <Button
           variant="primary-large"
           onClick={handleAddNewTask}
           className="w-[164px]"
         >
-          <span className="inline-flex items-center">
-            <span className="mr-2">+</span>
-            <span>Add New Task</span>
-          </span>
+          <span>+ Add New Task</span>
         </Button>
 
         <div className="w-6 ml-6">

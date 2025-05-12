@@ -1,24 +1,31 @@
-import React from "react";
+import React, { ReactNode, ElementType } from "react";
 
-interface BodyProps {
-  size: "l" | "m";
-  as?: "p" | "span" | "div";
-  children: React.ReactNode;
+export type BodySize = "l" | "m";
+
+export interface BodyProps extends React.HTMLAttributes<HTMLElement> {
+  size: BodySize;
+  children: ReactNode;
+  as?: ElementType;
   className?: string;
 }
 
-export const Body: React.FC<BodyProps> = ({
+export const Body = ({
   size,
-  as: Component = "p",
   children,
+  as,
   className = "",
-}) => {
-  const sizeClass = {
-    l: "text-body-l",
-    m: "text-body-m",
-  }[size];
+  ...props
+}: BodyProps) => {
+  const Component = as || "p";
+
+  const sizeClasses = {
+    l: "text-preset-5", // 13px body large
+    m: "text-preset-6", // 12px body medium
+  };
 
   return (
-    <Component className={`${sizeClass} ${className}`}>{children}</Component>
+    <Component className={`${sizeClasses[size]} ${className}`} {...props}>
+      {children}
+    </Component>
   );
 };

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import React, { ReactNode, forwardRef } from "react";
 
 export type ButtonVariant =
   | "primary-large"
@@ -8,35 +6,67 @@ export type ButtonVariant =
   | "secondary"
   | "destructive";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: ButtonVariant;
   children: ReactNode;
-  variant?: ButtonVariant;
-  fullWidth?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
-export const Button = ({
-  children,
-  className = "",
-  variant = "primary-large",
-  fullWidth = false,
-  disabled = false,
-  ...props
-}: ButtonProps) => {
-  // Aseguramos que usamos las clases correctas
-  const buttonClasses = [
-    `btn-${variant}`,
-    disabled ? "btn-disabled" : "",
-    fullWidth ? "btn-full" : "",
-    "focus:btn-focus",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+/**
+ * Button component with built-in styling variants
+ * Inherits typography from preset system
+ */
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant,
+      children,
+      disabled = false,
+      fullWidth = false,
+      className = "",
+      ...props
+    },
+    ref,
+  ) => {
+    const baseClasses = "transition-colors";
 
-  return (
-    <button className={buttonClasses} disabled={disabled} {...props}>
-      {typeof children === "string" ? <span>{children}</span> : children}
-    </button>
-  );
-};
+    const variantClasses = {
+      "primary-large": "btn-primary-large", // Uses text-preset-3
+      "primary-small": "btn-primary-small", // Uses text-preset-6
+      secondary: "btn-secondary", // Uses text-preset-6
+      destructive: "btn-destructive", // Uses text-preset-6
+    };
+
+    const conditionalClasses = [
+      disabled && "btn-disabled",
+      fullWidth && "btn-full",
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    // Combine all classes
+    const buttonClasses = [
+      baseClasses,
+      variantClasses[variant],
+      conditionalClasses,
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return (
+      <button
+        ref={ref}
+        className={buttonClasses}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
+);
+
+Button.displayName = "Button";

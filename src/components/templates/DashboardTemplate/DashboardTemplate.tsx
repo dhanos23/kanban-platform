@@ -1,55 +1,33 @@
-import { ReactNode, useState, useEffect } from "react";
-import { Sidebar } from "@/components/organisms/Sidebar";
-import { Header } from "@/components/organisms/Header";
-import { MainContent } from "@/components/organisms/MainContent";
+"use client";
+
+import { useState } from "react";
+import { Sidebar } from "@/components/organisms";
+import { Header } from "@/components/organisms";
 
 interface DashboardTemplateProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const DashboardTemplate = ({ children }: DashboardTemplateProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  useEffect(() => {
-    const checkIfMobile = () => {
-      const isMobileView = window.innerWidth < 768;
-      setIsMobile(isMobileView);
-
-      if (isMobileView) {
-        setIsSidebarOpen(false);
-      } else {
-        setIsSidebarOpen(true);
-      }
-    };
-
-    // Comprobar al cargar
-    checkIfMobile();
-
-    // Configurar el listener
-    window.addEventListener("resize", checkIfMobile);
-
-    // Limpiar al desmontar
-    return () => {
-      window.removeEventListener("resize", checkIfMobile);
-    };
-  }, []);
-
-  // Para evitar problemas de variable no usada
-  console.log(isMobile);
   return (
-    <div className="flex h-screen bg-background">
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
+    <div className="flex h-screen bg-background overflow-hidden">
       <div
-        className={`flex flex-col flex-1 overflow-hidden ${isSidebarOpen ? "" : "w-full"}`}
+        className={`transition-all duration-300 ease-in-out ${isSidebarOpen ? "w-[300px]" : "w-0"}`}
       >
-        <Header toggleSidebar={toggleSidebar} />
-        <MainContent>{children}</MainContent>
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      </div>
+
+      <div className="flex flex-col flex-1 overflow-hidden">
+        <Header isSidebarOpen={isSidebarOpen} />
+        <main className="flex-1 overflow-auto p-6 bg-background">
+          {children}
+        </main>
       </div>
     </div>
   );

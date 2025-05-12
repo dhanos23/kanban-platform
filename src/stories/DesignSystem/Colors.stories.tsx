@@ -1,4 +1,3 @@
-// src/stories/DesignSystem/Colors.stories.tsx
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 

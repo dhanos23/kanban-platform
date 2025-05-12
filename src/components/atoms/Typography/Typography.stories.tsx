@@ -1,8 +1,6 @@
-// src/components/atoms/Typography/Typography.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
 import { Heading } from "./index";
 
-// Stories para Heading
 const metaHeading: Meta<typeof Heading> = {
   title: "Design System/Atoms/Typography/Heading",
   component: Heading,

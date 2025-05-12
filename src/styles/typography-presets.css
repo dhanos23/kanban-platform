@@ -1,0 +1,73 @@
+/* ================================================== */
+/* PRESETS TIPOGRÁFICOS CANÓNICOS                    */
+/* ================================================== */
+/* Solo contienen declaraciones tipográficas puras   */
+
+@utility text-preset-1 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-xl-size); /* 24px */
+  line-height: var(--heading-xl-line); /* 30px */
+  font-weight: var(--font-weight-bold); /* 700 */
+}
+
+@utility text-preset-2 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-l-size); /* 18px */
+  line-height: var(--heading-l-line); /* 23px */
+  font-weight: var(--font-weight-bold); /* 700 */
+}
+
+@utility text-preset-3 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-m-size); /* 15px */
+  line-height: var(--heading-m-line); /* 19px */
+  font-weight: var(--font-weight-bold); /* 700 */
+}
+
+@utility text-preset-4 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--heading-s-size); /* 12px */
+  line-height: var(--heading-s-line); /* 15px */
+  font-weight: var(--font-weight-bold); /* 700 */
+  letter-spacing: var(--heading-s-kerning); /* 2.4px */
+  text-transform: uppercase;
+}
+
+@utility text-preset-5 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--body-l-size); /* 13px */
+  line-height: var(--body-l-line); /* 23px */
+  font-weight: var(--font-weight-medium); /* 500 */
+}
+
+@utility text-preset-6 {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--body-m-size); /* 12px */
+  line-height: var(--body-m-line); /* 15px */
+  font-weight: var(--font-weight-bold); /* 700 */
+}
+
+/* ================================================== */
+/* VARIANTES DE PESO                                  */
+/* ================================================== */
+/* Para cuando necesites un peso diferente del preset */
+
+@utility text-preset-1--medium {
+  @apply text-preset-1;
+  font-weight: var(--font-weight-medium);
+}
+
+@utility text-preset-2--medium {
+  @apply text-preset-2;
+  font-weight: var(--font-weight-medium);
+}
+
+@utility text-preset-3--medium {
+  @apply text-preset-3;
+  font-weight: var(--font-weight-medium);
+}
+
+@utility text-preset-5--bold {
+  @apply text-preset-5;
+  font-weight: var(--font-weight-bold);
+}

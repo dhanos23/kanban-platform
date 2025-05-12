@@ -1,4 +1,3 @@
-// src/components/atoms/Typography/Body.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
 import { Body } from "./index";
 
